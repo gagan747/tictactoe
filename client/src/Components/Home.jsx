@@ -265,7 +265,9 @@ class Home extends Component {
           ref={this.container}
         >
           <form className="d-flex flex-column justify-content-center align-items-center form p-5 ">
-            <span className="logout" onClick={ this.handleLogout }>Logout</span>
+            <span className="logout" onClick={this.handleLogout}>
+              Logout
+            </span>
             <div className="form-outline  ">
               <h1 className="text-center mb-4">Enter Room Id</h1>
             </div>
@@ -303,7 +305,7 @@ class Home extends Component {
               <>
                 <div className="invite-link m-3">
                   <p className="link ">
-                    http://localhost:3000/home?roomId=
+                    https://online-games-tic-tac-toe.herokuapp.com/#/home?roomId=
                     {this.state.genratedRoomId}
                   </p>
                   <p
