@@ -6,6 +6,7 @@ import Modal from "react-modal";
 import { toast } from "react-toastify";
 import messageCleaner from "../utils/messageCleaner";
 import copyToClipboard from "../utils/copyToClipboard";
+import qs from "query-string"
 
 const customStyles = {
   content: {
@@ -21,8 +22,9 @@ let myusername;
 Modal.setAppElement("#root");
 let subtitle;
 class Home extends Component {
-  queryParams = new URLSearchParams(window.location.search);
-  roomIdFromParams = this.queryParams.get("roomId");
+  roomIdFromParams = qs.parse(
+    window.location.hash.slice(window.location.hash.indexOf("?"))
+  ).roomId;
   container = React.createRef(null);
   state = {
     genratedRoomId: "",
@@ -82,9 +84,9 @@ class Home extends Component {
   }
 
   handleLogout = () => {
-    localStorage.clear('token');
-    this.setState({redirectToLogin:true})
-  }
+    localStorage.clear("token");
+    this.setState({ redirectToLogin: true });
+  };
   handleOnlinePlayers = (roomId) => {
     this.pushUserToRoom(roomId);
   };
@@ -104,13 +106,13 @@ class Home extends Component {
       if (response.status.toString().startsWith("4"))
         throw new Error(responseData.message);
       this.setState({ playersOnline: responseData.data });
-       this.setState({ toggleOnlineFriends: true });
-       this.container.current.style.opacity = "0.07";
+      this.setState({ toggleOnlineFriends: true });
+      this.container.current.style.opacity = "0.07";
     } catch (err) {
-      console.log('meow',err.toString())
+      console.log("meow", err.toString());
       toast.error(messageCleaner("" + err));
     }
-   };
+  };
   closeOnlineFriendDialogue = () => {
     this.setState({ toggleOnlineFriends: false });
     this.container.current.style.opacity = "1";
@@ -232,7 +234,7 @@ class Home extends Component {
                     >
                       <span>{player.users[0].username}</span>
                       <button
-                        className="btn btn-sm btn-success"
+                        className="btn btn-sm btn-success fw-bold"
                         onClick={() => this.handleOnlinePlayers(player.roomId)}
                       >
                         JOIN
@@ -309,7 +311,7 @@ class Home extends Component {
                     {this.state.genratedRoomId}
                   </p>
                   <p
-                    className="copy-link btn btn-success "
+                    className="copy-link btn btn-success d-flex align-items-center text-center fw-bold"
                     onClick={(e) => {
                       copyToClipboard(e.target.previousSibling.innerHTML);
                       toast.success("Link Copied");
@@ -320,7 +322,7 @@ class Home extends Component {
                 </div>{" "}
                 <button
                   type="submit"
-                  className="btn btn-primary mb-5"
+                  className="btn btn-primary mb-5 fw-bold"
                   onClick={(e) => this.joinRoom(e, this.state.genratedRoomId)}
                 >
                   JOIN

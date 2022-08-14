@@ -65,7 +65,7 @@ export default class Login extends Component {
           </div>
 
           <div className="d-flex justify-content-center">
-            <button type="button" className="btn btn-primary btn-block mb-4" onClick={this.handleLogin}>
+            <button type="button" className="btn btn-primary btn-block mb-4 fw-bold" onClick={this.handleLogin}>
               Sign in
             </button>
           </div>
