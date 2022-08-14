@@ -64,7 +64,13 @@ class Home extends Component {
         socket.on("roomFull", () => {
           this.openModal();
         });
-      } else {
+      }
+      else if(response.status === 307)
+      {
+        toast.error('Login to Continue');
+        this.setState({redirectToLogin:true})
+      } 
+      else {
         toast.error(data.message);
       }
     } catch (err) {
