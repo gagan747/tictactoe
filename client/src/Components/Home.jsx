@@ -36,6 +36,7 @@ class Home extends Component {
     toggleOnlineFriends: false,
     alreadyInRoomModal: { value: false, roomId: null },
     playersOnline: [],
+    username:''
   };
   openModal = () => {
     this.setState({ ...this.state, modalIsOpen: true });
@@ -167,6 +168,7 @@ class Home extends Component {
       const data = await response.json();
       if (response.status === 200) {
         myusername = data.username;
+        this.setState({username:myusername})
         if (data.roomId) this.handleAlreadyInRoomModal(data.roomId);
         else
           this.roomIdFromParams && this.pushUserToRoom(this.roomIdFromParams);
@@ -272,6 +274,7 @@ class Home extends Component {
           className="d-flex flex-column justify-content-center align-items-center container"
           ref={this.container}
         >
+          <div className="username">Hello {this.state.username}</div>
           <form className="d-flex flex-column justify-content-center align-items-center form p-5 ">
             <span className="logout" onClick={this.handleLogout}>
               Logout

@@ -196,8 +196,7 @@ cursor:pointer
 }
 @media screen and (max-width: 1074px) {
   .logout {
-      position: absolute;
-      bottom: -15px;
+     bottom: -15px;
       top:auto;
       right:auto
       
@@ -205,4 +204,15 @@ cursor:pointer
     .form{
       position: relative;
     }
+        .username {
+    display:none;
+        }
+}
+.username{
+  position: absolute;
+    top: 28px;
+    left: 29px;
+    font-weight: bold;
+    font-size:20px;
+    background-color: greenyellow;
 }
