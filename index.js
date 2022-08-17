@@ -15,7 +15,7 @@ const Gamedata = require('./models/gamedata');
 const onConnectionRefresh = require('./controllers/connectionRefreshController')
 const io = new Server(httpServer, {
   cors: {
-  origin: ["http://localhost:3000", "https://admin.socket.io"],
+  origin: ["https://online-games-tic-tac-toe.herokuapp.com", "https://admin.socket.io"],
   credentials: true,
   },
 });
