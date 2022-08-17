@@ -173,7 +173,7 @@ class Home extends Component {
         this.setState({username:myusername})
         if (data.roomId) this.handleAlreadyInRoomModal(data.roomId);
         else
-         this.roomIdFromParams && await this.pushUserToRoom(this.roomIdFromParams) 
+         if(this.roomIdFromParams) return this.pushUserToRoom(this.roomIdFromParams) 
       } else if (response.status === 307) {
         toast.error("Login to Continue");
         this.setState({ ...this.state, redirectToLogin: true });
