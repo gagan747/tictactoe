@@ -77,6 +77,7 @@ class Home extends Component {
       }
     } catch (err) {
       toast.error(messageCleaner("" + err));
+      document.getElementsByClassName("parentloader")[0].style.display = "none";
     }
   };
   afterOpenModal = () => {
@@ -172,12 +173,12 @@ class Home extends Component {
         this.setState({username:myusername})
         if (data.roomId) this.handleAlreadyInRoomModal(data.roomId);
         else
-         (this.roomIdFromParams && this.pushUserToRoom(this.roomIdFromParams)) || (document.getElementsByClassName("parentloader")[0].style.display =
-          "none");
+         this.roomIdFromParams && await this.pushUserToRoom(this.roomIdFromParams) 
       } else if (response.status === 307) {
         toast.error("Login to Continue");
         this.setState({ ...this.state, redirectToLogin: true });
       } else toast.error(data.message);
+      document.getElementsByClassName("parentloader")[0].style.display = "none";
     } catch (err) {
       toast.error(messageCleaner("" + err));
       document.getElementsByClassName("parentloader")[0].style.display = "none";
