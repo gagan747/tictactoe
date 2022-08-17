@@ -73,6 +73,7 @@ class Home extends Component {
       } 
       else {
         toast.error(data.message);
+        document.getElementsByClassName("parentloader")[0].style.display ="none";
       }
     } catch (err) {
       toast.error(messageCleaner("" + err));
