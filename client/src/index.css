@@ -216,3 +216,10 @@ cursor:pointer
     font-size:20px;
     background-color: greenyellow;
 }
+.countdowncircletimer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  right: 20px;
+  margin-top: 20px;
+}

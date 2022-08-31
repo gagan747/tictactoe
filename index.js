@@ -83,6 +83,15 @@ io.on('connection', (socket) => {
         console.log(err);
       }
     });
+      socket.on('leaveRoomBothOpponents', async () => {
+        try {
+          await Gamedata.deleteOne({ roomId: room });
+          socket.broadcast.to(room).emit('opponentTimeOver');
+          setTimeout(() => io.in(room).emit('redirectToHome'), 700);
+        } catch (err) {
+          console.log(err);
+        }
+      });
     socket.on('opponentTurnPayload', async (gamedata, user_id) => {
       try {
         const data = await Gamedata.findOne({ roomId: room });

@@ -3,4 +3,6 @@ function setheader(req,res,next){
     res.header('Access-Control-Expose-Headers', 'x-auth-token');
     next();
 }
+
+
 module.exports = setheader;

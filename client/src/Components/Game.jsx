@@ -10,6 +10,7 @@ import crossAudio from '../tictactoe2.mp3';
 import winningAudio from '../tictactoewin.mp3';
 import messageCleaner from '../utils/messageCleaner';
 import jwt from 'jwt-decode';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 let subtitle;
 const customStyles = {
@@ -35,10 +36,11 @@ class Game extends Component {
     this.value = null;
     this.turndesign = 0;
     this.Interval = null;
+    this.remainingtime = 29;
   }
 
   user_id =
-  localStorage.getItem('token') && jwt(localStorage.getItem('token'))._id;
+    localStorage.getItem('token') && jwt(localStorage.getItem('token'))._id;
 
   emptyBlocks = {
     block1: '',
@@ -59,7 +61,28 @@ class Game extends Component {
     redirectToLogin: false,
     redirectToHome: false,
   };
+  renderTime = ({ remainingTime }) => {
+    this.remainingtime = remainingTime;
+    localStorage.setItem('timer',remainingTime)
+    if (remainingTime === 0) {
+      toast.error('You Lost', {
+        toastId: 'youLost',
+      });
+      localStorage.removeItem('timer');
+      setTimeout(() => {
+        socket.emit('leaveRoomBothOpponents');
+      }, 100);
+      return <div className='timer'>Times Up</div>;
+    }
 
+    return (
+      <div className='timer text-center'>
+        <div className='text'>Remaining</div>
+        <div className='value text-center'>{remainingTime}</div>
+        <div className='text text-center'>seconds</div>
+      </div>
+    );
+  };
   openModal = () => {
     this.setState({ ...this.state, modalIsOpen: true });
   };
@@ -93,6 +116,7 @@ class Game extends Component {
       );
       this.turn = false;
     }
+     localStorage.removeItem('timer');
   };
   hasNullBlocks(target) {
     for (var member in target) {
@@ -172,6 +196,21 @@ class Game extends Component {
   };
 
   componentDidMount() {
+    
+     socket.on('opponentTimeOver', () => {
+       toast.success("Opponent's time over.You win!!!", {
+         toastId: 'opponentTimeOver',
+       });
+     });
+     socket.on('redirectToHome', () => {
+       this.setState({ redirectToHome: true });
+     });
+     window.onhashchange = (event) => {
+       localStorage.setItem('timer', this.remainingtime);
+     };
+     window.onbeforeunload = (event) => {
+       localStorage.setItem('timer', this.remainingtime);
+     };
     socket.on('refreshPage', (message) => {
       toast.error(message);
       setTimeout(() => {
@@ -286,7 +325,25 @@ class Game extends Component {
         >
           <h5>Waiting for another player to join..</h5>
         </Modal>
-        <h1 className='heading'>Tic Tac Toe</h1>
+        {this.turn === this.user_id && !this.state.modalIsOpen ? (
+          <div className='countdowncircletimer'>
+            <CountdownCircleTimer
+              isPlaying
+              duration={
+                localStorage.getItem('timer')
+                  ? localStorage.getItem('timer')
+                  : 29
+              }
+              colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+              colorsTime={[10, 6, 3, 0]}
+              onComplete={() => ({ shouldRepeat: false, delay: 10000000000 })}
+            >
+              {this.renderTime}
+            </CountdownCircleTimer>
+          </div>
+        ) : (
+          <h1 className='heading'>Tic Tac Toe</h1>
+        )}
         <div className='container position-relative'>
           <div className='parentloader'>
             <div className='spinner-border spinner'></div>
