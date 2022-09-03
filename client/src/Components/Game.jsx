@@ -204,6 +204,7 @@ class Game extends Component {
      });
      socket.on('redirectToHome', () => {
        this.setState({ redirectToHome: true });
+       socket.emit('leaveRoom', this.user_id);
      });
      window.onhashchange = (event) => {
        localStorage.setItem('timer', this.remainingtime);
