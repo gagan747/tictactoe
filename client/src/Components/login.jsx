@@ -16,7 +16,7 @@ export default class Login extends Component {
 	};
 	handleLogin = async () => {
 		try {
-			const response = await fetch(hostname + 'api/login', {
+			const response = await fetch(hostname + '/api/login', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
