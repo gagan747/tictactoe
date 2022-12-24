@@ -4,6 +4,7 @@ const { createServer } = require('http');
 const { Server } = require('socket.io');
 const { instrument } = require('@socket.io/admin-ui');
 const app = express();
+const path = require('path');
 const cors = require('cors');
 const setheader = require('./utils/setheader');
 const httpServer = createServer(app);
@@ -34,13 +35,13 @@ instrument(io, {
 
 app.use(express.json());
 app.use(setheader);
-app.use(
+app.use(GET
   cors({
     origin: '*',
     credentials: 'true',
   })
 );
-app.use(express.static('client/build'));
+app.use(express.static(path.join(__dirname, "/client/build")));
 app.use('/api', home);
 app.use('/api', userAuth);
 app.use('/api', joinRoom);
@@ -148,7 +149,6 @@ process
     console.error(err, 'Uncaught Exception thrown');
     process.exit(1);
   });
-  const path = require('path');
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
