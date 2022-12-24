@@ -1,2 +1,3 @@
 import { io } from "socket.io-client";
-export const socket = io("https://online-games-tic-tac-toe.herokuapp.com");
+import hostname from "./config";
+export const socket = io(hostname);
