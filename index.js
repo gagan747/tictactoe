@@ -20,7 +20,7 @@ const io = new Server(httpServer, {
   },
 });
 require('./controllers/polling')(io);
-
+const PORT = process.env.port || 5000
 mongoose
   .connect(
     'mongodb+srv://dbuser:Waheguru747477%40@cluster0.pkxnk.mongodb.net/tictactoe?retryWrites=true&w=majority'
@@ -137,7 +137,9 @@ io.on('connection', (socket) => {
     socket.emit('refreshPage');
   });
 });
-httpServer.listen(process.env.PORT);
+httpServer.listen(PORT,()=>{
+  console.log('listening on '+PORT)
+});
 process
   .on('unhandledRejection', (reason, p) => {
     console.error(reason, 'Unhandled Rejection at Promise', p);
