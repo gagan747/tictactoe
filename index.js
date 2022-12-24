@@ -40,7 +40,7 @@ app.use(
     credentials: 'true',
   })
 );
-
+app.use(express.static('client/build'));
 app.use('/api', home);
 app.use('/api', userAuth);
 app.use('/api', joinRoom);
@@ -148,9 +148,6 @@ process
     console.error(err, 'Uncaught Exception thrown');
     process.exit(1);
   });
-
-
-  app.use(express.static('client/build'));
   const path = require('path');
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
