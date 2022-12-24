@@ -35,8 +35,7 @@ instrument(io, {
 
 app.use(express.json());
 app.use(setheader);
-app.use(GET
-  cors({
+app.use(cors({
     origin: '*',
     credentials: 'true',
   })
