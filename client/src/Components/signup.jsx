@@ -15,7 +15,7 @@ export default class Signup extends Component {
 	};
 	handleSignup = async () => {
 		try {
-			const response = await fetch(hostname + '/signup', {
+			const response = await fetch(hostname + '/api/signup', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
