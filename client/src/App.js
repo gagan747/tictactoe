@@ -1,12 +1,13 @@
 import AppRoutes from "./Routes";
-import { Component } from "react" 
+import { Component } from "react";
 
- class App extends Component {
-
+class App extends Component {
   render() {
-    return <>
-    < AppRoutes />
-    </>
+    return (
+      <>
+        <AppRoutes />
+      </>
+    );
   }
 }
 export default App;

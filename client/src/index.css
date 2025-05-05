@@ -1,16 +1,16 @@
 body {
   margin: 0;
 
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 .container {
   display: flex;
@@ -19,7 +19,6 @@ code {
   justify-content: center;
   align-items: center;
   width: 100%;
-  
 }
 .child-container {
   width: 40%;
@@ -38,7 +37,6 @@ code {
   color: red;
   font-weight: bold;
   border-radius: 13px;
-
 }
 .block:hover {
   background-color: rgb(0, 231, 0);
@@ -92,129 +90,125 @@ code {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
 }
-.eye{
-  position:absolute;
-  top:25%;
-  right:4%;
+.eye {
+  position: absolute;
+  top: 25%;
+  right: 4%;
 }
 
 @media only screen and (max-width: 1000px) {
-   .block{
+  .block {
     font-size: 58px;
   }
 }
-.parentloader{
-display:flex;
-justify-content: center;
-align-items:center;
-height:100%;    /* height and width not necessary as in spinner I have given h & w in vw & vh. As z index is positive so as to stop clicks when loader is on we have to give h & w so user can't click on blocks as it lies beneath the h&w then  */
-position:absolute;
-width:100%;
-z-index:1;
-background-color:white;
-opacity:0.97;
-}
-.spinner{
-width:calc(10vw + 20vh);
-height:calc(10vw + 20vh);
-
-}
-.turn-selector{
-  position:absolute;
-  top:2%;
-  left:34%;
-  right:34%;
-  width:30%;
-  font-size:x-large;
-  font-weight: bold;
-  color:rgb(0, 231, 0);
-  display:none;
-  text-align: center;
-}
-.invite-link{
-  display:flex;
-  flex-wrap:wrap;
-  width:80%;
-  justify-content:center
-}
-.link{
-  display:flex;
+.parentloader {
+  display: flex;
   justify-content: center;
   align-items: center;
-  flex-basis:80%;
-  overflow:auto;
+  height: 100%; /* height and width not necessary as in spinner I have given h & w in vw & vh. As z index is positive so as to stop clicks when loader is on we have to give h & w so user can't click on blocks as it lies beneath the h&w then  */
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+  opacity: 0.97;
+}
+.spinner {
+  width: calc(10vw + 20vh);
+  height: calc(10vw + 20vh);
+}
+.turn-selector {
+  position: absolute;
+  top: 2%;
+  left: 34%;
+  right: 34%;
+  width: 30%;
+  font-size: x-large;
+  font-weight: bold;
+  color: rgb(0, 231, 0);
+  display: none;
+  text-align: center;
+}
+.invite-link {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: center;
+}
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 80%;
+  overflow: auto;
   word-break: break-all;
-  background-color: rgb(239,239,239);
+  background-color: rgb(239, 239, 239);
 }
-.online-friends{
+.online-friends {
   box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-  height:50%;
-  width:400px;
-  z-index:1;
-  position:absolute;
-  left:0;
-  right:0;
-  margin:auto;
-  top:20%;
-  bottom:30%;
+  height: 50%;
+  width: 400px;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 20%;
+  bottom: 30%;
   box-sizing: border-box;
-  overflow-y:auto;
-
+  overflow-y: auto;
 }
-.close-icon{
-  position:absolute;
-  right:4%;
-  top:2%;
+.close-icon {
+  position: absolute;
+  right: 4%;
+  top: 2%;
 }
 
-.in-room-modal{
+.in-room-modal {
   box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-  width:500px;
-  height:250px;
-  z-index:1;
-  position:absolute;
-  left:0;
-  right:0;
-  margin:auto;
-  top:20%;
+  width: 500px;
+  height: 250px;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 20%;
   box-sizing: border-box;
 }
-.logout{
-position:absolute;
-top:28px;
-right:29px;
-font-weight: bold;
-border:2px solid rgb(201, 0, 0);
-background-color: rgb(201, 0, 0);
-color:white;
-padding:2px 10px;
-box-sizing: border-box;
-border-radius: 4px;
-cursor:pointer
+.logout {
+  position: absolute;
+  top: 28px;
+  right: 29px;
+  font-weight: bold;
+  border: 2px solid rgb(201, 0, 0);
+  background-color: rgb(201, 0, 0);
+  color: white;
+  padding: 2px 10px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  cursor: pointer;
 }
 @media screen and (max-width: 1074px) {
   .logout {
-     bottom: -15px;
-      top:auto;
-      right:auto
-      
-    }
-    .form{
-      position: relative;
-    }
-        .username {
-    display:none;
-        }
-} 
-.username{
+    bottom: -15px;
+    top: auto;
+    right: auto;
+  }
+  .form {
+    position: relative;
+  }
+  .username {
+    display: none;
+  }
+}
+.username {
   position: absolute;
-    top: 28px;
-    left: 29px;
-    font-weight: bold;
-    font-size:20px;
-    background-color: greenyellow;
+  top: 28px;
+  left: 29px;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: greenyellow;
 }
 .countdowncircletimer {
   position: relative;

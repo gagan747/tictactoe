@@ -26,10 +26,13 @@ const signup = async (req, res) => {
   try {
     const { username, password } = req.body;
     if (!(username && password))
-     return res.status(400).json({ message: "Field can't be empty" });
-     const isValidPassword = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#%])/.test(password);
-     if(!isValidPassword)  
-     throw new Error("Password must contain at least one uppercase,lower case and one special character");
+      return res.status(400).json({ message: "Field can't be empty" });
+    const isValidPassword =
+      /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#%])/.test(password);
+    if (!isValidPassword)
+      throw new Error(
+        "Password must contain at least one uppercase,lower case and one special character",
+      );
     const user = new Users({ username, password });
     user.password = await bcrypt.hash(user.password, 10);
     await user.save();

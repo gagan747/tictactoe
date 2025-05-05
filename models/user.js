@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const userschema = mongoose.Schema({
   username: {
@@ -21,5 +21,5 @@ const userschema = mongoose.Schema({
     required: [true, "password is required"],
   },
 });
-const Users = mongoose.model('Users', userschema);
+const Users = mongoose.model("Users", userschema);
 module.exports = Users;
